@@ -1,0 +1,22 @@
+pipeline:
+    name: 'process'
+description: 'Extract content in xml files to a csv file'
+input:
+    cross:
+        - pfs: 
+            repo: 'data'
+            branch: 'master'
+            glob: '/'
+        - pfs: 
+            repo: 'code'
+            branch: 'master'
+            glob: '/'
+transform:
+    image: mendeza/python38_process:0.2
+    cmd: 
+        - '/bin/sh'
+    stdin: 
+    # - "while :; do echo 'Hello'; sleep 5 ; done"
+    - 'pip install darts;'
+    - 'bash /pfs/code/code/scripts/process.sh'
+autoscaling: False

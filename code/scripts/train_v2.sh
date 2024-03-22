@@ -1,0 +1,1 @@
+echo "$(openssl rand -base64 12)" > /pfs/out/random_file.txt
